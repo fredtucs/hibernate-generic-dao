@@ -22,7 +22,6 @@
 		<artifactId>oss-parent</artifactId>
 		<version>5</version>
 	</parent>
-
 	<modules>
 		<module>test-base</module>
 		<module>search</module>
@@ -34,15 +33,15 @@
 	</modules>
 
 	<scm>
-		<connection>scm:svn:http://hibernate-generic-dao.googlecode.com/svn/trunk</connection>
-		<developerConnection>scm:svn:https://hibernate-generic-dao.googlecode.com/svn/trunk</developerConnection>
-		<url>http://hibernate-generic-dao.googlecode.com/svn/trunk</url>
+		<url>https://github.com/fredtucs/hibernate-generic-dao.git</url>
+		<connection>scm:git:git://github.com/fredtucs/hibernate-generic-dao.git</connection>
+		<developerConnection>scm:git:git@github.com:fredtucs/hibernate-generic-dao.git</developerConnection>
 	</scm>
 	<developers>
 		<developer>
-			<id>dwolvert</id>
-			<name>David Wolverton</name>
-			<email>dwolvert@gmail.com</email>
+			<id>fredtucs</id>
+			<name>Fredy Tuco</name>
+			<email>fredtucs_86@hotmail.com</email>
 		</developer>
 	</developers>
 	<build>
@@ -61,6 +60,43 @@
 			</testResource>
 		</testResources>
 		<plugins>
+
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>downloads-maven-plugin</artifactId>
+				<version>0.6</version>
+				<configuration>
+					<description>Official ${project.name} build of the ${project.version} release</description>
+					<override>true</override>
+					<includeAttached>true</includeAttached>
+					<server>github</server>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+						<phase>install</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.7</version>
+				<configuration>
+					<message>Building site for ${project.version}</message>
+					<server>github</server>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -106,7 +142,7 @@
 				</executions>
 				<configuration>
 					<show>protected</show>
-					<includePackageNames>com.googlecode</includePackageNames>
+					<!--<includePackageNames>com.googlecode</includePackageNames>-->
 				</configuration>
 			</plugin>
 		</plugins>
